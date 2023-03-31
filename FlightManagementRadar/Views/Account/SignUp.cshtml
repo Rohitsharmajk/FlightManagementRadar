@@ -13,19 +13,18 @@
 @using (Html.BeginForm("SignUp", "Account"))
 {
     <div>
-        @Html.LabelFor(m => m.username)
-        @Html.TextBoxFor(m => m.username)
+        @Html.LabelFor(m => m.username, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.username)
     </div>
     <div>
-        @Html.LabelFor(m => m.password)
-        @Html.TextBoxFor(m => m.password)
+        @Html.LabelFor(m => m.password, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.password)
     </div>
-    
-    <input type="submit" value="Sign Up" />
+
+    <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">SignUp</button>
 }
 
-<div>
-    @Html.ActionLink("Back to Login Page", "LogIn")
-</div>
+<p>Already a User? LogIn 👇</p>
+<p><a href="/Account/LogIn" class="btn btn-primary">Login </a></p>

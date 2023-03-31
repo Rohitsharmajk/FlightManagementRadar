@@ -10,15 +10,16 @@
 @using (Html.BeginForm("LogIn", "Account"))
 {
     <div>
-        @Html.LabelFor(m => m.username)
-        @Html.TextBoxFor(m => m.username)
+        @Html.LabelFor(m => m.username, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
     </div>
     <div>
-        @Html.LabelFor(m => m.password)
-        @Html.TextBoxFor(m => m.password)
+        @Html.LabelFor(m => m.password, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
     </div>
 
-    <input type="submit" value="Login" />
+    <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">LogIn</button>
 }
 
-@Html.ActionLink("Click here to SignUp", "SignUp")
+<p>New User? SignUp Now! 👇</p>
+<p><a href="/Account/SignUp" class="btn btn-primary">SignUp </a></p>
