@@ -1,0 +1,31 @@
+﻿@model FlightManagementRadar.Models.User_Details
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+
+
+<h2>SignUp</h2>
+
+<p>Please Enter the UserName and Password of your Choice</p>
+
+@using (Html.BeginForm("SignUp", "Account"))
+{
+    <div>
+        @Html.LabelFor(m => m.username)
+        @Html.TextBoxFor(m => m.username)
+        @Html.ValidationMessageFor(m => m.username)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.password)
+        @Html.TextBoxFor(m => m.password)
+        @Html.ValidationMessageFor(m => m.password)
+    </div>
+    
+    <input type="submit" value="Sign Up" />
+}
+
+<div>
+    @Html.ActionLink("Back to Login Page", "LogIn")
+</div>
