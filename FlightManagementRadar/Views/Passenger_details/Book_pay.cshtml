@@ -1,0 +1,15 @@
+@{
+    ViewBag.Title = "Book_pay";
+}
+
+<h2>Book_pay</h2>
+<form method="post" action="/Passenger_details/Book_pay">
+    <label>Name</label>
+    <input type="text" name="Name" required/><br />
+    <label>Contact No.(10 digit)</label>
+    <input type="tel" name="PhoneNum" pattern="[0-9]{10}" required/><br />
+    <label>E-mail</label>
+    <input type="text" name="Email" required/><br />
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+</form>
