@@ -129,33 +129,36 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Passenger_detailsController.cs" />
+    <Compile Include="Controllers\ValidateBookingIDController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CheckIn_Details.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>FlightManagementRadar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightManagementRadar.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightManagementRadar.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightManagementRadar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightManagementRadar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightManagementRadar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightManagementRadar.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Flight_Data.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>FlightManagementRadar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Details.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>FlightManagementRadar.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,24 +171,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\FlightManagementRadar.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>FlightManagementRadar.edmx</DependentUpon>
+      <LastGenOutput>FlightManagementRadar.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\FlightManagementRadar.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>FlightManagementRadar.edmx</DependentUpon>
+      <LastGenOutput>FlightManagementRadar.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\FlightManagementRadar.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>FlightManagementRadar.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\FlightManagementRadar.edmx.diagram">
+      <DependentUpon>FlightManagementRadar.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -215,6 +218,13 @@
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Passenger_details\Book_pay.cshtml" />
+    <Content Include="Views\Passenger_details\Continue.cshtml" />
+    <Content Include="Views\ValidateBookingID\CheckIn.cshtml" />
+    <Content Include="Views\ValidateBookingID\CheckInSuccess.cshtml" />
+    <Content Include="Views\ValidateBookingID\ValidateCheck.cshtml" />
+    <Content Include="Views\Booking\GetDetails.cshtml" />
+    <Content Include="Views\Booking\BookFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

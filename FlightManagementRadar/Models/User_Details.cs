@@ -11,10 +11,18 @@ namespace FlightManagementRadar.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_Details
     {
+        [Required]
+        [Display(Name ="User Name")]
         public string username { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required]
+        [Display(Name = "Password")]
         public string password { get; set; }
     }
 }

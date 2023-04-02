@@ -1,8 +1,8 @@
-using Flight_Management.Models;
+using FlightManagementRadar.Models;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Flight_Management.Controllers
+namespace FlightManagementRadar.Controllers
 {
     public class ValidateBookingIDController : Controller
     {
@@ -28,11 +28,14 @@ namespace Flight_Management.Controllers
                 if(isValid)
                 {
                     TempData["ID"]=obj.Boarding_ID;
+                    context.CheckIn_Details.Remove(context.CheckIn_Details.SingleOrDefault(m=>m.Boarding_ID==obj.Boarding_ID));
+                    context.SaveChanges();
                     return RedirectToAction("CheckInSuccess");
                 }
             }
-
-            return Content(obj.Boarding_ID.ToString());
+            ModelState.AddModelError("IdNotFound", "Your ID is Invalid! Please Re-check");
+            return View("CheckIn");
+            //return Content("<h1></h1>");
         }
     }
 }

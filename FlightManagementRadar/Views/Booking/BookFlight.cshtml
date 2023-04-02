@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "BookFlight";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+@Html.Partial("_LoginPartial")
+<h2>Book Flight <small class="text-muted">Choose Your Flight</small></h2>
+<table class="table table-success table-striped">
+    <tr>
+        <th>Flight Id</th>
+        <th>Flight Name</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Boarding Time</th>
+        <th>Fare</th>
+        <th>Book Here</th>
+    </tr>
+    @foreach (var x in @ViewBag.dets)
+    {
+        <tr>
+            <td>@x.Flight_ID</td>
+            <td>@x.Flight_Name</td>
+            <td>@x.Beginning</td>
+            <td>@x.Destination</td>
+            <td>@x.Boarding_Time</td>
+            <td>@x.Fare</td>
+            <td><a href='@Url.Action("Book_pay", "Passenger_details", new { FID = @x.Flight_ID })' class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">Book Now</a></td>
+        </tr>
+    }
+</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+

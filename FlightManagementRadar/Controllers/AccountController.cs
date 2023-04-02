@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,6 +15,7 @@ namespace FlightManagementRadar.Controllers
         // GET: Account
         public ActionResult LogIn()
         {
+            Session["user"] = null;
             return View();
         }
 
@@ -26,13 +28,13 @@ namespace FlightManagementRadar.Controllers
 
                 if (IsValid)
                 {
-                    ViewBag.un = u.username;
+                    Session["user"]= u.username;
                     return RedirectToAction("Index", "Home");
                     //return View("ViewInput");
                 }
 
             }
-            ModelState.AddModelError("", "Invalid UserName or Password");
+            ModelState.AddModelError("userNameOrPass", "Incorrect username/password!");
             return View();
 
         }
@@ -50,18 +52,19 @@ namespace FlightManagementRadar.Controllers
             {
                 bool IsValid = ctx.User_Details.Any(usr => usr.username == u.username);
 
+
                 if (!IsValid)
                 {
                     ctx.User_Details.Add(u);
                     ctx.SaveChanges();
-
+                    
                     return RedirectToAction("LogIn");
                    
                 }
 
             }
-            ModelState.AddModelError("", "UserName Not Available. Try Different One");
-            return View(u);
+            ModelState.AddModelError("usernameExists", "Username already exists!");
+            return View();
 
 
         }

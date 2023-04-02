@@ -1,10 +1,14 @@
 @{
-    ViewBag.Title = "Continue";
+    ViewBag.Title = "Thank You";
 }
 
-<h2>Continue</h2>
+@Html.Partial("_LoginPartial")
+<div class="alert alert-success" role="alert">
+<h2 align="center" class="alert-heading">Your Booking is Confirmed!</h2>
 
 <p>Thank you @ViewBag.Nm for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on @ViewBag.pn respectively.</p>
 <br />
-<p> Your Boarding id is : @ViewBag.bid </p>
-<p>note: your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
+<p><b> Your Boarding id is : @ViewBag.bid </b></p>
+<hr>
+<p class="mb-0"><b>NOTE:</b> Your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
+</div>

@@ -25,8 +25,8 @@ namespace FlightManagementRadar.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CheckIn_Details> CheckIn_Details { get; set; }
         public virtual DbSet<Flight_Data> Flight_Data { get; set; }
         public virtual DbSet<User_Details> User_Details { get; set; }
-        public virtual DbSet<CheckIn_Details> CheckIn_Details { get; set; }
     }
 }

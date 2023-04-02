@@ -1,8 +1,9 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "Check In";
 }
-@model Flight_Management.Models.CheckIn_Details
+@model FlightManagementRadar.Models.CheckIn_Details
+@Html.Partial("_LoginPartial")
+<br>
 <!DOCTYPE html>
 
 <html>
@@ -11,15 +12,19 @@
     <title>CheckIn</title>
 </head>
 <body>
-    @using(Html.BeginForm("ValidateCheck", "ValidateBookingID",FormMethod.Post))
+    @using (Html.BeginForm("ValidateCheck", "ValidateBookingID", FormMethod.Post))
     {
-        <div>
-            @Html.LabelFor(m => m.Boarding_ID)
-            @Html.TextBoxFor(m => m.Boarding_ID)
-            @Html.ValidationMessageFor(m=>m.Boarding_ID)
-            <input type="submit" value="Check" />
+        <h1 align="center">Enter Your Boarding ID to Check In</h1><br/>
+        <div class="input-group mb-3" style="margin-left:30%">
+            @Html.LabelFor(m => m.Boarding_ID, new { @class = "input-group-text" })
+            @Html.TextBoxFor(m => m.Boarding_ID, new { @class = "form-control" })
+            <input type="submit" value="Check" class="btn btn-primary" />
         </div>
-         
-     }
+        <div style="color:red; margin-left:38%">
+            @Html.ValidationMessageFor(m => m.Boarding_ID)
+            @Html.ValidationMessage("IdNotFound")
+        </div>
+
+    }
 </body>
 </html>

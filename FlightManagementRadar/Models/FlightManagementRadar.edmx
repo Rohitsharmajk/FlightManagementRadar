@@ -5,13 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="FlightManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'FlightManagement.dbo.CheckIn_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CheckIn_Details">
           <Key>
             <PropertyRef Name="Boarding_ID" />
           </Key>
-          <Property Name="Boarding_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Boarding_ID" Type="int" Nullable="false" />
           <Property Name="Flight_ID" Type="int" />
         </EntityType>
         <EntityType Name="Flight_Data">
@@ -33,20 +31,22 @@ warning 6002: The table/view 'FlightManagement.dbo.CheckIn_Details' does not hav
           <Property Name="password" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityContainer Name="FlightManagementModelStoreContainer">
+          <EntitySet Name="CheckIn_Details" EntityType="Self.CheckIn_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flight_Data" EntityType="Self.Flight_Data" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Details" EntityType="Self.User_Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CheckIn_Details" EntityType="Self.CheckIn_Details" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CheckIn_Details].[Boarding_ID] AS [Boarding_ID], 
-    [CheckIn_Details].[Flight_ID] AS [Flight_ID]
-    FROM [dbo].[CheckIn_Details] AS [CheckIn_Details]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FlightManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CheckIn_Details">
+          <Key>
+            <PropertyRef Name="Boarding_ID" />
+          </Key>
+          <Property Name="Boarding_ID" Type="Int32" Nullable="false" />
+          <Property Name="Flight_ID" Type="Int32" />
+        </EntityType>
         <EntityType Name="Flight_Data">
           <Key>
             <PropertyRef Name="Flight_ID" />
@@ -65,17 +65,10 @@ warning 6002: The table/view 'FlightManagement.dbo.CheckIn_Details' does not hav
           <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="CheckIn_Details">
-          <Key>
-            <PropertyRef Name="Boarding_ID" />
-          </Key>
-          <Property Name="Boarding_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Flight_ID" Type="Int32" />
-        </EntityType>
         <EntityContainer Name="FlightManagementContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CheckIn_Details" EntityType="Self.CheckIn_Details" />
           <EntitySet Name="Flight_Data" EntityType="Self.Flight_Data" />
           <EntitySet Name="User_Details" EntityType="Self.User_Details" />
-          <EntitySet Name="CheckIn_Details" EntityType="Self.CheckIn_Details" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -83,6 +76,14 @@ warning 6002: The table/view 'FlightManagement.dbo.CheckIn_Details' does not hav
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FlightManagementModelStoreContainer" CdmEntityContainer="FlightManagementContext">
+          <EntitySetMapping Name="CheckIn_Details">
+            <EntityTypeMapping TypeName="FlightManagementModel.CheckIn_Details">
+              <MappingFragment StoreEntitySet="CheckIn_Details">
+                <ScalarProperty Name="Boarding_ID" ColumnName="Boarding_ID" />
+                <ScalarProperty Name="Flight_ID" ColumnName="Flight_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Flight_Data">
             <EntityTypeMapping TypeName="FlightManagementModel.Flight_Data">
               <MappingFragment StoreEntitySet="Flight_Data">
@@ -100,14 +101,6 @@ warning 6002: The table/view 'FlightManagement.dbo.CheckIn_Details' does not hav
               <MappingFragment StoreEntitySet="User_Details">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CheckIn_Details">
-            <EntityTypeMapping TypeName="FlightManagementModel.CheckIn_Details">
-              <MappingFragment StoreEntitySet="CheckIn_Details">
-                <ScalarProperty Name="Boarding_ID" ColumnName="Boarding_ID" />
-                <ScalarProperty Name="Flight_ID" ColumnName="Flight_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

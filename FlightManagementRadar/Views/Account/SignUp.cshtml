@@ -4,27 +4,34 @@
     ViewBag.Title = "SignUp";
 }
 
+<div>
 
+    <h2>SignUp</h2>
 
-<h2>SignUp</h2>
+    <p>Please Enter the UserName and Password of your Choice</p>
 
-<p>Please Enter the UserName and Password of your Choice</p>
+    @using (Html.BeginForm("SignUp", "Account"))
+    {
+        <div>
+            @Html.LabelFor(m => m.username, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+            <div style="color:red">
+                @Html.ValidationMessageFor(m => m.username)
+            </div>
+        </div>
+        <div>
+            @Html.LabelFor(m => m.password, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+            <div style="color:red">
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+        </div>
+        <div style="color:red">
+            @Html.ValidationMessage("usernameExists")
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">SignUp</button>
+    }
 
-@using (Html.BeginForm("SignUp", "Account"))
-{
-    <div>
-        @Html.LabelFor(m => m.username, new { @class = "form-label" })
-        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.username)
-    </div>
-    <div>
-        @Html.LabelFor(m => m.password, new { @class = "form-label" })
-        @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.password)
-    </div>
-
-    <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">SignUp</button>
-}
-
-<p>Already a User? LogIn 👇</p>
-<p><a href="/Account/LogIn" class="btn btn-primary">Login </a></p>
+    <p>Already a User? LogIn 👇</p>
+    <p><a href="/Account/LogIn" class="btn btn-primary">Login </a></p>
+</div>

@@ -10,6 +10,7 @@ namespace FlightManagementRadar.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.some = 1;
             return View();
         }
 

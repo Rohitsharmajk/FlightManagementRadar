@@ -16,10 +16,32 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                
+
             </div>
+            <div class="container">
+
+                @{
+                    if (Session["user"] != null)
+                    {
+                        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            </ul>
+                            <ul class="navbar-nav navbar-right">
+                                <li style="color:gray; margin-right:2rem; margin-top:8px">@Session["user"]</li>
+
+                                <li><a href="/Account/LogIn" class="btn btn-primary">Logout </a></li>
+                               
+                            </ul>
+
+                        </div>} }
+                    </div>
         </div>
+
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -1,8 +1,9 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Successfull Checked In";
 }
-
+@Html.Partial("_LoginPartial")
+<br>
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +12,8 @@
     <title>CheckInSuccess</title>
 </head>
 <body>
-    <div> 
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
         <h1>Check In with @TempData["ID"] Boarding Pass is Successfull !</h1>
     </div>
 </body>

@@ -2,14 +2,24 @@
     ViewBag.Title = "Book_pay";
 }
 
-<h2>Book_pay</h2>
+@Html.Partial("_LoginPartial")
+<h2>Enter Your Personal Details</h2>
 <form method="post" action="/Passenger_details/Book_pay">
-    <label>Name</label>
-    <input type="text" name="Name" required/><br />
-    <label>Contact No.(10 digit)</label>
-    <input type="tel" name="PhoneNum" pattern="[0-9]{10}" required/><br />
-    <label>E-mail</label>
-    <input type="text" name="Email" required/><br />
-    <input type="submit" value="Submit" />
-    <input type="reset" value="Reset" />
+    <div class="input-group mb-3">
+    <label class="input-group-text">Name</label>
+    <input type="text" name="Name" required class="form-control"/><br />
+    </div>
+
+    <div class="input-group mb-3">
+    <label class="input-group-text">Contact No.(10 digit)</label>
+    <input type="tel" name="PhoneNum" pattern="[0-9]{10}" required class="form-control"/><br />
+    </div>
+
+    <div class="input-group mb-3">
+    <label class="input-group-text">E-mail</label>
+    <input type="email" name="Email" required class="form-control"/><br />
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+    <input type="reset" value="Reset" class="btn btn-primary"/>
 </form>
