@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+@model Flight_Management.Models.CheckIn_Details
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CheckIn</title>
+</head>
+<body>
+    @using(Html.BeginForm("ValidateCheck", "ValidateBookingID",FormMethod.Post))
+    {
+        <div>
+            @Html.LabelFor(m => m.Boarding_ID)
+            @Html.TextBoxFor(m => m.Boarding_ID)
+            @Html.ValidationMessageFor(m=>m.Boarding_ID)
+            <input type="submit" value="Check" />
+        </div>
+         
+     }
+</body>
+</html>
