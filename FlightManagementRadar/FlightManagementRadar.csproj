@@ -171,6 +171,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\4457872.jpg" />
     <Content Include="Models\FlightManagementRadar.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FlightManagementRadar.edmx</DependentUpon>

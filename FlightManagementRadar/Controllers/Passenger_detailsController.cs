@@ -1,8 +1,5 @@
 using FlightManagementRadar.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Flight_Management.Controllers
@@ -27,7 +24,6 @@ namespace Flight_Management.Controllers
             ViewBag.nm = Name;
             ViewBag.pn = PhoneNum;
             ViewBag.eml = Email;
-            Console.WriteLine(BID);
             
             
           

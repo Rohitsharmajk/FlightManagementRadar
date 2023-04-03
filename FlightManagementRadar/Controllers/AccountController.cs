@@ -1,9 +1,5 @@
 ﻿using FlightManagementRadar.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FlightManagementRadar.Controllers
@@ -70,7 +66,6 @@ namespace FlightManagementRadar.Controllers
         }
         public ActionResult LogOut()
         {
-            //FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
     }

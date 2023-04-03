@@ -14,14 +14,14 @@
 <body>
     @using (Html.BeginForm("ValidateCheck", "ValidateBookingID", FormMethod.Post))
     {
-        <h1 align="center">Enter Your Boarding ID to Check In</h1><br/>
+        <h1 align="center" class="display-3">Enter Your Boarding ID to Check In</h1><br/>
         <div class="input-group mb-3" style="margin-left:30%">
             @Html.LabelFor(m => m.Boarding_ID, new { @class = "input-group-text" })
             @Html.TextBoxFor(m => m.Boarding_ID, new { @class = "form-control" })
             <input type="submit" value="Check" class="btn btn-primary" />
         </div>
         <div style="color:red; margin-left:38%">
-            @Html.ValidationMessageFor(m => m.Boarding_ID)
+            @Html.ValidationMessageFor(m => m.Boarding_ID)<br/>
             @Html.ValidationMessage("IdNotFound")
         </div>
 

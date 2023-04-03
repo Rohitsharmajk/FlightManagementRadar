@@ -6,16 +6,16 @@
 }
 
 <div>
-    <h2>Log In</h2>
+    <h2 class="display-3">Log In</h2>
     @using (Html.BeginForm("LogIn", "Account"))
     {
         <div>
             @Html.LabelFor(m => m.username, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.username, new { @class = "form-control" , autocomplete = "off" })
         </div>
         <div>
             @Html.LabelFor(m => m.password, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.password, new { @class = "form-control", autocomplete = "off" })
         </div>
         <div style="color:red">
         @Html.ValidationMessage("userNameOrPass")
