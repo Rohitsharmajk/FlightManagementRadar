@@ -21,7 +21,7 @@
         </div>
         <div>
             @Html.LabelFor(m => m.password, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.password, new { @class = "form-control", autocomplete = "off" })
+            @Html.PasswordFor(m => m.password, new { @class = "form-control", autocomplete = "off" })
             <div style="color:red">
                 @Html.ValidationMessageFor(m => m.password)
             </div>
