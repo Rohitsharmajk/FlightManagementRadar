@@ -9,17 +9,21 @@
 
 namespace FlightManagementRadar.Models
 {
-    using System.ComponentModel.DataAnnotations;
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class User_Details
     {
-        [Required]
-        [Display(Name ="User Name")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User_Details()
+        {
+            this.CheckIn_Details = new HashSet<CheckIn_Details>();
+        }
+    
         public string username { get; set; }
-
-        [DataType(DataType.Password)]
-        [Required]
-        [Display(Name = "Password")]
         public string password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CheckIn_Details> CheckIn_Details { get; set; }
     }
 }

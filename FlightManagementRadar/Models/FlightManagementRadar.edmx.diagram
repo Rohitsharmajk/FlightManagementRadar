@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="88e5fc7809a2407daebd6e7e1f4bfd9f" Name="Diagram1">
+      <Diagram DiagramId="88e5fc7809a2407daebd6e7e1f4bfd9f" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="FlightManagementModel.CheckIn_Details" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlightManagementModel.Flight_Data" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlightManagementModel.User_Details" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlightManagementModel.Flight_Data" Width="1.5" PointX="4.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlightManagementModel.User_Details" Width="1.5" PointX="1.625" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="FlightManagementModel.fk_01" />
+        <AssociationConnector Association="FlightManagementModel.fk_02" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

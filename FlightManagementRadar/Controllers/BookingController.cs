@@ -1,5 +1,7 @@
 ﻿using FlightManagementRadar.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,9 +20,10 @@ namespace FlightManagementRadar.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BookFlight(string Source, string Destination)
+        public ActionResult BookFlight(string Source, string Destination,DateTime Date)
         {
-            ViewBag.dets = cont.Flight_Data.Where(x => x.Beginning.Equals(Source) && x.Destination.Equals(Destination)).OrderBy(x=>x.Boarding_Time).ToList();
+            List<Flight_Data> list = cont.Flight_Data.Where(x => x.Beginning.Equals(Source) && x.Destination.Equals(Destination) && DbFunctions.TruncateTime(x.Boarding_Time) == Date.Date ).OrderBy(x=>x.Boarding_Time).ToList();
+            ViewBag.dets=list;
             return View();
         }
     }

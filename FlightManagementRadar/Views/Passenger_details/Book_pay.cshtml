@@ -1,25 +1,36 @@
 @{
     ViewBag.Title = "Book_pay";
+    String[] arr = { "Male", "Female" };
 }
 
 @Html.Partial("_LoginPartial")
 <h2 class="display-3">Enter Your Personal Details</h2>
 <form method="post" action="/Passenger_details/Book_pay">
     <div class="input-group mb-3">
-    <label class="input-group-text">Name</label>
-    <input type="text" name="Name" required class="form-control" autocomplete="off"/><br />
+        <label class="input-group-text">Name</label>
+        <input type="text" name="Name" required class="form-control" autocomplete="off" /><br />
     </div>
 
     <div class="input-group mb-3">
-    <label class="input-group-text">Contact No.(10 digit)</label>
-    <input type="tel" name="PhoneNum" pattern="[0-9]{10}" required class="form-control" autocomplete="off"/><br />
+        <label class="input-group-text">Contact No.(10 digit)</label>
+        <input type="tel" name="PhoneNum" pattern="[0-9]{10}" required class="form-control" autocomplete="off" /><br />
     </div>
 
     <div class="input-group mb-3">
-    <label class="input-group-text">E-mail</label>
-    <input type="email" name="Email" required class="form-control" autocomplete="off"/><br />
+        <label class="input-group-text">E-mail</label>
+        <input type="email" name="Email" required class="form-control" autocomplete="off" /><br />
     </div>
 
-    <input type="submit" value="Submit" class="btn btn-primary"/>
-    <input type="reset" value="Reset" class="btn btn-primary"/>
+    <div class="input-group mb-3">
+        <label class="input-group-text">Gender</label>
+         @Html.DropDownList("Gender", new SelectList(arr), "Select", new { required = "required" })
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text">Age</label>
+        <input type="number" name="Age" required class="form-control" autocomplete="off" /><br />
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary" />
+    <input type="reset" value="Reset" class="btn btn-primary" />
 </form>

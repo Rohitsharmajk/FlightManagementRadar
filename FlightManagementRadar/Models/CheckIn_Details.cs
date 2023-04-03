@@ -11,13 +11,19 @@ namespace FlightManagementRadar.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CheckIn_Details
     {
-        [Display(Name ="Boarding ID")]
         public int Boarding_ID { get; set; }
         public Nullable<int> Flight_ID { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> PhoneNum { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string Gender { get; set; }
+        public string username { get; set; }
+    
+        public virtual User_Details User_Details { get; set; }
+        public virtual Flight_Data Flight_Data { get; set; }
     }
 }

@@ -14,11 +14,20 @@ namespace FlightManagementRadar.Models
     
     public partial class Flight_Data
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Flight_Data()
+        {
+            this.CheckIn_Details = new HashSet<CheckIn_Details>();
+        }
+    
         public int Flight_ID { get; set; }
         public string Flight_Name { get; set; }
         public string Beginning { get; set; }
         public string Destination { get; set; }
-        public Nullable<System.DateTime> Boarding_Time { get; set; }
+        public System.DateTime Boarding_Time { get; set; }
         public Nullable<double> Fare { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CheckIn_Details> CheckIn_Details { get; set; }
     }
 }

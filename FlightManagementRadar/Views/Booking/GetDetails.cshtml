@@ -11,12 +11,12 @@
         <div style="margin-left:40%">
             <div class="input-group mb-3">
                 <Label class="input-group-text" style="text-align:center">Select Source: </Label>
-                @Html.DropDownList("Source", new SelectList(ViewBag.Beginning),"Select")
+                @Html.DropDownList("Source", new SelectList(ViewBag.Beginning), "Select", new { required="required"})
             </div>
 
             <div class="input-group mb-3">
                 <Label class="input-group-text">Select Destination: </Label>
-                @Html.DropDownList("Destination", new SelectList(ViewBag.Dest), "Select")
+                @Html.DropDownList("Destination", new SelectList(ViewBag.Dest), "Select", new { required = "required" })
             </div>
 
             <div class="input-group mb-3">
