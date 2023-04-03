@@ -29,6 +29,10 @@
         <div style="color:red">
             @Html.ValidationMessage("usernameExists")
         </div>
+        <div>
+            @Html.Label("Confirm Password", new { @class = "form-label" })
+            @Html.Password("Password","", new { @class = "form-control", autocomplete = "off" })
+        </div>
         <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">SignUp</button>
     }
 
