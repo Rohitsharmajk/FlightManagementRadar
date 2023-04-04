@@ -9,22 +9,43 @@ namespace FlightManagementRadar.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.some = 1;
-            return View();
+            if (Session["user"] != null)
+            {
+                ViewBag.some = 1;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            if (Session["user"] != null)
+            {
+                ViewBag.Message = "Your application description page.";
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            if (Session["user"] != null)
+            {
+                ViewBag.Message = "Your contact page.";
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
     }
 }

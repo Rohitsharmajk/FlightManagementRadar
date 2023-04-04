@@ -17,6 +17,7 @@
             @Html.TextBoxFor(m => m.username, new { @class = "form-control", autocomplete = "off" })
             <div style="color:red">
                 @Html.ValidationMessageFor(m => m.username)
+                @Html.ValidationMessage("usernameExists")
             </div>
         </div>
         <div>
@@ -26,12 +27,14 @@
                 @Html.ValidationMessageFor(m => m.password)
             </div>
         </div>
-        <div style="color:red">
-            @Html.ValidationMessage("usernameExists")
-        </div>
+
         <div>
             @Html.Label("Confirm Password", new { @class = "form-label" })
-            @Html.Password("Password","", new { @class = "form-control", autocomplete = "off" })
+            @Html.Password("confirmpass", "", new { @class = "form-control", autocomplete = "off" })
+        </div>
+        <div style="color:red">
+          
+            @Html.ValidationMessage("notsame")
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top:1rem; margin-bottom:1rem;">SignUp</button>
     }

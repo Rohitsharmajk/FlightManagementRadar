@@ -11,30 +11,50 @@ namespace FlightManagementRadar.Controllers
         
         public ActionResult CheckIn()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
         
         public ActionResult CheckInSuccess()
         {
-
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
         [HttpPost]
         public ActionResult ValidateCheck(CheckIn_Details obj)
         {
-            if(ModelState.IsValid)
+            if (Session["user"] != null)
             {
-                bool isValid=context.CheckIn_Details.Any(m=>m.Boarding_ID==obj.Boarding_ID);
-                if(isValid)
+                if (ModelState.IsValid)
                 {
-                    TempData["ID"]=obj.Boarding_ID;
-                    context.CheckIn_Details.Remove(context.CheckIn_Details.SingleOrDefault(m=>m.Boarding_ID==obj.Boarding_ID));
-                    context.SaveChanges();
-                    return RedirectToAction("CheckInSuccess");
+                    bool isValid = context.CheckIn_Details.Any(m => m.Boarding_ID == obj.Boarding_ID);
+                    if (isValid)
+                    {
+                        TempData["ID"] = obj.Boarding_ID;
+                        context.CheckIn_Details.Remove(context.CheckIn_Details.SingleOrDefault(m => m.Boarding_ID == obj.Boarding_ID));
+                        context.SaveChanges();
+                        return RedirectToAction("CheckInSuccess");
+                    }
                 }
+                ModelState.AddModelError("IdNotFound", "Your ID is Invalid! Please Re-check");
+                return View("CheckIn");
             }
-            ModelState.AddModelError("IdNotFound", "Your ID is Invalid! Please Re-check");
-            return View("CheckIn");
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
             //return Content("<h1></h1>");
         }
     }
