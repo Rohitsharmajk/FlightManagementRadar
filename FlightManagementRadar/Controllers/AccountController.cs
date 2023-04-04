@@ -42,16 +42,21 @@ namespace FlightManagementRadar.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(User_Details u)
+        public ActionResult SignUp( string username,string password,string confirmpass)
         {
-            if (ModelState.IsValid)
+            bool same = password.Equals(confirmpass);
+            if (!same)
             {
-                bool IsValid = ctx.User_Details.Any(usr => usr.username == u.username);
+                ModelState.AddModelError("notsame", "Password and Confirm Password doesn't match");
+            }
+            if (ModelState.IsValid && same)
+            {
+                bool IsValid = ctx.User_Details.Any(usr => usr.username == username);
 
 
                 if (!IsValid)
                 {
-                    ctx.User_Details.Add(u);
+                    ctx.User_Details.Add(new User_Details() { username=username,password=password});
                     ctx.SaveChanges();
                     
                     return RedirectToAction("LogIn");
@@ -59,7 +64,11 @@ namespace FlightManagementRadar.Controllers
                 }
 
             }
-            ModelState.AddModelError("usernameExists", "Username already exists!");
+            else
+            {
+                ModelState.AddModelError("usernameExists", "Username already exists!");
+            }
+            
             return View();
 
 
