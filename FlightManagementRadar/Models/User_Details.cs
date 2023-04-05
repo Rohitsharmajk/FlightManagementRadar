@@ -11,7 +11,8 @@ namespace FlightManagementRadar.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_Details
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,11 @@ namespace FlightManagementRadar.Models
         {
             this.CheckIn_Details = new HashSet<CheckIn_Details>();
         }
-    
+        [MinLength(2,ErrorMessage ="Username Length should be atleast 2")]
+        [Display(Name="User Name")]
         public string username { get; set; }
+        [MinLength(6,ErrorMessage = "Password Length should be atleast 2")]
+        [Display(Name ="Password")]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
