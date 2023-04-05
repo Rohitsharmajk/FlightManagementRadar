@@ -226,6 +226,8 @@
     <Content Include="Views\ValidateBookingID\ValidateCheck.cshtml" />
     <Content Include="Views\Booking\GetDetails.cshtml" />
     <Content Include="Views\Booking\BookFlight.cshtml" />
+    <Content Include="Views\Passenger_details\Book_Del.cshtml" />
+    <Content Include="Views\Passenger_details\Book_Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,7 @@
     <div style="width: 50%; height: 100px; float: left;">
         <h2 class="display-6">Enter Your Personal Details</h2>
 
-        <form method="post" action="/Passenger_details/Book_pay">
+        <form method="post">
             <div class="input-group mb-3">
                 <label class="input-group-text">Name</label>
                 <input type="text" name="Name" required class="form-control" autocomplete="off" /><br />
@@ -35,29 +35,34 @@
                 <input type="number" name="Age" required class="form-control" autocomplete="off" /><br />
             </div>
 
-            <input type="submit" value="Submit" class="btn btn-primary" />
+
             <input type="reset" value="Reset" class="btn btn-primary" />
-            <a href='@Url.Action("Book_pay", "Passenger_details", new { FID = ViewBag.fid})' class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">Add</a>
+            <input type="submit" value="Add" class="btn btn-primary" formaction="@Url.Action("Book_Add")" formmethod="post" />
         </form>
+        <br/>
+        <a href='@Url.Action("Continue", "Passenger_details")' class="btn btn-primary">Submit</a>
     </div>
     <div style="width: 50%; height: 100px; float: left;padding-left:10px">
         <h2 class="display-6">Members Added</h2>
-        @{
-            foreach (CheckIn_Details x in @ViewBag.list)
-            {
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                        <p>@x.Name</p>
+        <div style="overflow:auto ; overflow:auto;  display:flex">
+            @{
+                foreach (CheckIn_Details x in @ViewBag.list)
+                {
+                    <div class="card display-8" style="width: 18rem; margin-left:15px ">
+                        <div class="card-header" style="text-align:center">
+                            <p><b>@x.Name</b></p>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Age: @x.Age</li>
+                            <li class="list-group-item">Gender: @x.Gender</li>
+                        </ul>
+                        <a href='@Url.Action("Book_Del", "Passenger_details", new { Boarding_ID = @x.Boarding_ID})' class="btn btn-primary" style="background-color:red; border:none">Delete</a>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Boarding ID: @x.Boarding_ID</li>
-                        <li class="list-group-item">Age: @x.Age</li>
-                        <li class="list-group-item">Gender: @x.Gender</li>
-                    </ul>
-                    <a href='@Url.Action("Book_pay", "Passenger_details", new { FID = ViewBag.fid})' class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">Delete</a>
-                </div>
+
+                }
             }
-        }
+        </div>
         @*<h1>rohit</h1>*@
     </div>
     </div>

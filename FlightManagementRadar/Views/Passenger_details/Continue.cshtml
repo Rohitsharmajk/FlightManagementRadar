@@ -1,14 +1,152 @@
 @{
     ViewBag.Title = "Thank You";
 }
-
-@Html.Partial("_LoginPartial")
+@using FlightManagementRadar.Models
 <div class="alert alert-success" role="alert">
-<h2 align="center" class="alert-heading">Your Booking is Confirmed!</h2>
+    <h2 align="center" class="alert-heading">Your Booking is Confirmed!</h2>
 
-<p>Thank you @ViewBag.Nm for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on @ViewBag.pn respectively.</p>
-<br />
-<p><b> Your Boarding id is : @ViewBag.bid </b></p>
-<hr>
-<p class="mb-0"><b>NOTE:</b> Your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
+    <p>Thank you @ViewBag.Nm for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on @ViewBag.pn respectively.</p>
+    <hr>
+    <p class="mb-0"><b>NOTE:</b> Your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
 </div>
+<head>
+    <script>function printDiv() {
+                var divContents = document.getElementById("myticket").innerHTML;
+                var a = window.open('', '', 'height=500, width=500');
+                a.document.write('<html>');
+                a.document.write('<body > <h1>Thank you for booking with us, please exibit the following at the time of check in.<br>');
+                a.document.write(divContents);
+                a.document.write('</body></html>');
+                a.document.close();
+                a.print();
+            }</script>
+    <style>
+
+        .ticket {
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: 100%;
+            background-color: #0f5132;
+            width: 700px;
+            height: 300px;
+            border-radius: 15px;
+            -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            display: block;
+            margin: 10% auto auto auto;
+            color: #fff;
+            ;
+        }
+
+        .date {
+            margin: 15px;
+            -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+            .date .day {
+                font-size: 80px;
+                float: left;
+            }
+
+
+            .date .month-and-time {
+                float: left;
+                margin: 15px 0 0 0;
+                font-weight: bold;
+            }
+
+        .artist {
+            font-size: 30px;
+            margin: 10px 100px 0 40px;
+            float: left;
+            font-weight: bold;
+            -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .location {
+            float: left;
+            margin: 60px 0 0 20px;
+            font-size: 30px;
+            font-weight: bold;
+            -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .rip {
+            border-right: 8px dotted #ffffff;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 530px;
+        }
+
+        .cta .fl {
+            position: absolute;
+            top: 135px;
+            right: 15px;
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: yellow;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #000;
+            text-decoration: none;
+            -webkit-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .small {
+            font-weight: 200;
+        }
+    </style>
+</head>
+<body>
+    @{
+        foreach(CheckIn_Details x in @ViewBag.list1)
+        {
+
+
+
+            <div class="ticket" id="myticket">
+
+                <div class="date">
+                    <span class="day">@ViewBag.fl.Boarding_Time.Day</span>
+                    <span class="month-and-time">@ViewBag.fl.Boarding_Time.ToString("MMM")<br /><span class="small">@ViewBag.fl.Boarding_Time.TimeOfDay</span></span>
+                </div>
+
+                <div class="artist">
+                    <span class="name">@x.Name</span>
+                    <br />
+                    <span class="live small">@ViewBag.fl.Beginning ----------------- @ViewBag.fl.Destination</span>
+                    <br />
+                    <span class="live small">@x.Age, @x.Gender</span>
+                </div>
+
+                <div class="location">
+                    <span>Boarding ID</span>
+                    <br />
+                    <span class="small"><span>@x.Boarding_ID</span>
+                </div>
+
+                <div class="rip">
+                </div>
+                <div class="cta">
+                    <span class="fl">Flight no: @ViewBag.fl.Flight_ID</span>
+                </div>
+            </div>
+
+
+
+        }
+    }
+    <br/>
+    <div style="text-align:center">
+        <button  class="btn btn-primary" onclick="printDiv()" style="background-color: #0f5132; bottom: 0px; left: 300px; right: 300px; width: 300px; border: none">Print</button>
+    </div>
